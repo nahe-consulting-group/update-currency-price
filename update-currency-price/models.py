@@ -11,6 +11,6 @@ class ProductTemplate(models.Model):
         currency_usd = self.env['res.currency'].search([('name','=','USD')])
         for product in products:
             product.list_price = product.list_price * currency_usd.rate
-            # el numero por el que divide es el tipo de cambio hardcodeado pero quiero que tome el valor rate de force_currency_id
+            # el tipo de cambio es el de la moneda USD se puede cambiar el name en el search para otra moneda
             product.force_currency_id = 3
             #el id 3 es dolares USD en el caso del servidor que estoy probando con odoo 11
