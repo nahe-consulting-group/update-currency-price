@@ -9,7 +9,7 @@ class ProductTemplate(models.Model):
         #products = self.env['product.product'].search([('name','=','ADAPTADOR BLUETOOTH 4.0 USB - OEM TP-7183')])
         products = self.env['product.product'].search([('force_currency_id','=',20)])
         for product in products:
-            product.list_price = product.list_price / product.currency_id.rate
+            product.list_price = product.list_price / product.currency_id(3).rate
             # el numero por el que divide es el tipo de cambio hardcodeado pero quiero que tome el valor rate de force_currency_id
             product.force_currency_id = 3
             #el id 3 es dolares USD en el caso del servidor qu eestoy probando con odoo 11
